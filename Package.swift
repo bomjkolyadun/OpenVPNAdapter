@@ -1,12 +1,13 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.9
 
 import PackageDescription
 
 let package = Package(
     name: "OpenVPNAdapter",
     platforms: [
-        .iOS("9.0"),
-        .macOS("10.11"),
+        .macOS(.v12),
+        .iOS(.v15)
+        .tvOS(.v17)
     ],
     products: [
         .library(name: "OpenVPNAdapter", type: .static, targets: ["OpenVPNAdapter"]),
@@ -33,7 +34,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "mbedTLS", 
+            name: "mbedTLS",
             sources: ["library"],
             cSettings: [
                 .define("MBEDTLS_MD4_C"),
